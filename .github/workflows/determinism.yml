@@ -37,3 +37,8 @@ jobs:
 
       - name: JSON bomb tests
         run: python tests/json_bomb_test.py
+
+      - name: Cross-language (Python vs Node)
+        run: |
+          node tests/cross_lang_node_test.js
+          python tests/cross_lang_py_test.py
