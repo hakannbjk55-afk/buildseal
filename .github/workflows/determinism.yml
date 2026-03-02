@@ -34,3 +34,6 @@ jobs:
 
       - name: JCS strict tests
         run: python tests/jcs_strict_test.py
+
+      - name: JSON bomb tests
+        run: python tests/json_bomb_test.py
