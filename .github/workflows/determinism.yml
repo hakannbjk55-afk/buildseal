@@ -31,3 +31,6 @@ jobs:
 
       - name: Invalid UTF-8 reject
         run: python tests/invalid_utf8_test.py
+
+      - name: JCS strict tests
+        run: python tests/jcs_strict_test.py
