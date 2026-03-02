@@ -1,21 +1,39 @@
 # BuildSeal
 
-BuildSeal proves that a release artifact existed at a specific time and has not been modified since.
+If your release pipeline is ever questioned, you need independent proof — not internal logs.
 
-It anchors artifact hashes to a public blockchain, producing independently verifiable integrity proofs — without relying on a central server.
+BuildSeal anchors release artifact hashes to a public blockchain, producing independently verifiable integrity proofs without relying on a central service.
 
 ---
 
-## What Problem Does It Solve?
+## Why This Exists
 
-In modern CI/CD pipelines, it is difficult to independently prove that:
+Modern CI/CD pipelines produce binaries that are trusted by users, customers, and auditors.
 
-- The deployed binary is exactly what was built
-- The artifact was not modified after release
-- The release existed at a specific point in time
+But when someone asks:
 
-Screenshots and spreadsheets are not cryptographic evidence.  
-BuildSeal provides tamper-evident, on-chain proof.
+- "How do we know this binary wasn’t modified after build?"
+- "Can you prove this release existed at that time?"
+- "Is this artifact exactly what your pipeline produced?"
+
+Most teams answer with logs, screenshots, or internal systems.
+
+BuildSeal provides cryptographic, tamper-evident proof anchored on a public chain.
+
+---
+
+## Why Blockchain?
+
+A Merkle tree or transparency log helps — but it still depends on an operator.
+
+Blockchain provides:
+
+- Public timestamp not controlled by us  
+- Economic immutability guarantees  
+- Independent verification without trusting a service  
+- No operator that can shut the system down  
+
+The proof does not depend on BuildSeal staying online.
 
 ---
 
@@ -28,38 +46,46 @@ BuildSeal provides tamper-evident, on-chain proof.
 
 No database.  
 No central verification server.  
-Blockchain acts as the public integrity layer.
+Verification works even if we disappear.
 
 ---
 
-## FAQ
+## Positioning
 
-### Is this a timestamping tool?
-No. It anchors artifact hashes, combining integrity and time proof.
+Sigstore answers: "Who signed this?"
+BuildSeal answers: "Did this artifact change, and when did it exist?"
 
-### What happens if the blockchain stops?
-Existing proofs remain valid. New anchors cannot be created.
-
-### Is this dependent on a single chain?
-Currently yes. Multi-chain anchoring is planned.
-
-### What if the signing key is compromised?
-Current model uses a single key (MVP trade-off). Multi-signature support is planned.
-
-### Is this legally binding?
-No legal guarantees. It provides cryptographic tamper-evidence. Legal standing depends on jurisdiction.
-
-### How is this different from Sigstore?
-Sigstore focuses on identity-based signing.
-BuildSeal focuses on time and integrity anchoring.
 They are complementary.
+
+---
+
+## Security Model (Current State)
+
+- Single signing key (MVP model)
+- Single-chain anchoring
+
+### Roadmap
+
+- Threshold signatures (multi-signer model)
+- Multi-chain redundancy
+- Hardened deployment mode
+
+---
+
+## What This Is Not
+
+- Not a legal guarantee
+- Not a compliance certification
+- Not a full supply-chain framework
+
+It is integrity anchoring.
 
 ---
 
 ## Status
 
 MVP — production-capable for integrity anchoring.  
-Multi-chain and multi-signature support planned.
+Hardened features in progress.
 
 ---
 
